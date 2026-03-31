@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Name — Data Scientist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0f0f0d;
+    --surface: #171714;
+    --surface2: #1e1e1a;
+    --border: rgba(255,255,255,0.07);
+    --text: #e8e6df;
+    --muted: #888780;
+    --accent: #1D9E75;
+    --accent-dim: rgba(29,158,117,0.12);
+    --amber: #EF9F27;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 3rem;
+    border-bottom: 1px solid var(--border);
+    background: rgba(15,15,13,0.85);
+    backdrop-filter: blur(12px);
+  }
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 3rem 4rem;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 24px; height: 1px;
+    background: var(--accent);
+  }
+
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 1.05;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-bio {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 540px;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+  .hero-bio strong { color: var(--text); font-weight: 500; }
+
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: var(--mono);
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+  }
+  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--border);
+  }
+  .btn-outline:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
+
+  /* FLOATING DATA POINTS (decorative) */
+  .hero-decoration {
+    position: absolute;
+    right: 0; top: 50%;
+    transform: translateY(-50%);
+    width: 320px;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  /* STATS STRIP */
+  .stats-strip {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 2rem 3rem;
+  }
+  .stats-inner {
+    max-width: 900px; margin: 0 auto;
+    display: flex; gap: 3rem; flex-wrap: wrap;
+  }
+  .stat { display: flex; flex-direction: column; gap: 0.25rem; }
+  .stat-num {
+    font-family: var(--mono);
+    font-size: 1.75rem;
+    color: var(--text);
+    font-weight: 500;
+    line-height: 1;
+  }
+  .stat-num span { color: var(--accent); }
+  .stat-label {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ABOUT */
+  .section {
+    max-width: 900px; margin: 0 auto;
+    padding: 6rem 3rem;
+  }
+  .section-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    line-height: 1.2;
+    margin-bottom: 2.5rem;
+    color: var(--text);
+  }
+  .section-title em { font-style: italic; color: var(--accent); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .about-text {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.85;
+    font-weight: 300;
+  }
+  .about-text strong { color: var(--text); font-weight: 500; }
+  .about-text p + p { margin-top: 1rem; }
+
+  .about-sidebar { display: flex; flex-direction: column; gap: 1rem; }
+
+  .tag-group { display: flex; flex-direction: column; gap: 0.75rem; }
+  .tag-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .tag {
+    background: var(--accent-dim);
+    color: var(--accent);
+    font-size: 12px;
+    font-family: var(--mono);
+    padding: 0.3rem 0.75rem;
+    border-radius: 3px;
+    border: 1px solid rgba(29,158,117,0.2);
+  }
+  .tag.amber {
+    background: rgba(239,159,39,0.1);
+    color: var(--amber);
+    border-color: rgba(239,159,39,0.2);
+  }
+
+  /* CURRENTLY section */
+  .currently-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem;
+  }
+  .currently-card .card-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .currently-item {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    font-size: 13px;
+    color: var(--text);
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .currently-item:last-child { border-bottom: none; }
+  .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    margin-top: 0.5rem;
+  }
+  .dot.amber { background: var(--amber); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-left {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a {
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    font-family: var(--mono);
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--accent); }
+
+  /* SCROLL ANIMATION */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 680px) {
+    nav { padding: 1rem 1.5rem; }
+    .hero, .section { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .stats-strip { padding: 1.5rem; }
+    .stats-inner { gap: 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; }
+    .hero-decoration { display: none; }
+    footer { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">yourname.dev</span>
+  <ul class="nav-links">
+    <li><a href="#about">about</a></li>
+    <li><a href="#projects">projects</a></li>
+    <li><a href="#thoughts">thoughts</a></li>
+    <li><a href="#contact">contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">available for work</div>
+  <h1 class="hero-name">
+    Your Name.<br>
+    Data <em>Scientist.</em>
+  </h1>
+  <p class="hero-bio">
+    I turn <strong>messy data</strong> into decisions people can act on.
+    I care about the math under the hood and the story it tells
+    — because <strong>models that can't be explained</strong> don't get used.
+  </p>
+  <div class="hero-actions">
+    <a href="#projects" class="btn btn-primary">view my work</a>
+    <a href="#about" class="btn btn-outline">about me</a>
+  </div>
+
+  <!-- decorative scatter plot -->
+  <svg class="hero-decoration" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <line x1="30" y1="260" x2="270" y2="40" stroke="#1D9E75" stroke-width="1" stroke-dasharray="4 4" opacity="0.5"/>
+    <circle cx="45" cy="240" r="4" fill="#1D9E75" opacity="0.6"/>
+    <circle cx="70" cy="210" r="3" fill="#1D9E75" opacity="0.4"/>
+    <circle cx="90" cy="195" r="5" fill="#EF9F27" opacity="0.5"/>
+    <circle cx="110" cy="185" r="3" fill="#1D9E75" opacity="0.6"/>
+    <circle cx="130" cy="160" r="4" fill="#1D9E75" opacity="0.4"/>
+    <circle cx="150" cy="145" r="6" fill="#1D9E75" opacity="0.7"/>
+    <circle cx="165" cy="130" r="3" fill="#EF9F27" opacity="0.5"/>
+    <circle cx="185" cy="110" r="4" fill="#1D9E75" opacity="0.5"/>
+    <circle cx="200" cy="95" r="3" fill="#1D9E75" opacity="0.4"/>
+    <circle cx="220" cy="80" r="5" fill="#EF9F27" opacity="0.6"/>
+    <circle cx="240" cy="65" r="4" fill="#1D9E75" opacity="0.5"/>
+    <circle cx="255" cy="55" r="3" fill="#1D9E75" opacity="0.4"/>
+    <circle cx="80" cy="150" r="3" fill="#888780" opacity="0.4"/>
+    <circle cx="170" cy="200" r="4" fill="#888780" opacity="0.3"/>
+    <circle cx="230" cy="140" r="3" fill="#888780" opacity="0.4"/>
+    <line x1="20" y1="270" x2="285" y2="270" stroke="#444441" stroke-width="0.5"/>
+    <line x1="20" y1="270" x2="20" y2="20" stroke="#444441" stroke-width="0.5"/>
+    <line x1="20" y1="220" x2="15" y2="220" stroke="#444441" stroke-width="0.5"/>
+    <line x1="20" y1="170" x2="15" y2="170" stroke="#444441" stroke-width="0.5"/>
+    <line x1="20" y1="120" x2="15" y2="120" stroke="#444441" stroke-width="0.5"/>
+    <line x1="20" y1="70" x2="15" y2="70" stroke="#444441" stroke-width="0.5"/>
+    <line x1="80" y1="270" x2="80" y2="275" stroke="#444441" stroke-width="0.5"/>
+    <line x1="140" y1="270" x2="140" y2="275" stroke="#444441" stroke-width="0.5"/>
+    <line x1="200" y1="270" x2="200" y2="275" stroke="#444441" stroke-width="0.5"/>
+    <line x1="260" y1="270" x2="260" y2="275" stroke="#444441" stroke-width="0.5"/>
+  </svg>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat">
+      <span class="stat-num">0<span>x</span></span>
+      <span class="stat-label">projects shipped</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">0<span>+</span></span>
+      <span class="stat-label">models built</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">0<span>k</span></span>
+      <span class="stat-label">rows wrangled</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">∞</span>
+      <span class="stat-label">curiosity</span>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="section fade-up" id="about">
+  <div class="section-tag">01 — about</div>
+  <h2 class="section-title">I find patterns.<br>I <em>question</em> them too.</h2>
+
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I'm a data scientist with a genuine interest in how things work —
+        not just the models, but the <strong>people, decisions, and systems</strong> around them.
+        I've worked on everything from exploratory analysis to predictive modeling and ML pipelines.
+      </p>
+      <p>
+        Before I was writing code, I was asking "why?" — and that habit stuck.
+        I think the best data work is <strong>skeptical and human</strong>: rigorous enough to trust,
+        honest enough to be useful.
+      </p>
+      <p>
+        Outside the terminal I'm probably reading, making coffee,
+        or thinking about a problem I haven't solved yet.
+      </p>
+    </div>
+
+    <div class="about-sidebar">
+      <div class="tag-group">
+        <span class="tag-label">stack</span>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">SQL</span>
+          <span class="tag">scikit-learn</span>
+          <span class="tag">pandas</span>
+          <span class="tag">git</span>
+        </div>
+      </div>
+
+      <div class="tag-group">
+        <span class="tag-label">interests</span>
+        <div class="tags">
+          <span class="tag amber">interpretability</span>
+          <span class="tag amber">causal inference</span>
+          <span class="tag amber">NLP</span>
+        </div>
+      </div>
+
+      <div class="currently-card">
+        <div class="card-label">currently</div>
+        <div class="currently-item">
+          <div class="dot"></div>
+          <span>Looking for DS roles in consulting</span>
+        </div>
+        <div class="currently-item">
+          <div class="dot amber"></div>
+          <span>Building this site</span>
+        </div>
+        <div class="currently-item">
+          <div class="dot"></div>
+          <span>Reading: placeholder book</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEASER SECTIONS -->
+<section class="section fade-up" id="projects" style="padding-top: 0;">
+  <div style="border: 1px solid var(--border); border-radius: 8px; padding: 2.5rem; text-align: center; background: var(--surface);">
+    <div class="section-tag" style="justify-content: center; display: block;">02 — projects</div>
+    <p style="color: var(--muted); font-size: 1rem; margin-top: 0.5rem; font-weight: 300;">
+      Coming soon — case studies, notebooks, and write-ups.
+    </p>
+  </div>
+</section>
+
+<section class="section fade-up" id="thoughts" style="padding-top: 1.5rem;">
+  <div style="border: 1px solid var(--border); border-radius: 8px; padding: 2.5rem; text-align: center; background: var(--surface);">
+    <div class="section-tag" style="justify-content: center; display: block;">03 — thoughts</div>
+    <p style="color: var(--muted); font-size: 1rem; margin-top: 0.5rem; font-weight: 300;">
+      Notes, opinions, and things worth writing down.
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-left">
+    &copy; 2026 · built with intention
+  </div>
+  <div class="footer-links">
+    <a href="mailto:you@yourname.dev">email</a>
+    <a href="https://github.com" target="_blank">github</a>
+    <a href="https://linkedin.com" target="_blank">linkedin</a>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
