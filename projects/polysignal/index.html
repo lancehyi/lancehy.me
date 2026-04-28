@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polysignal-BTC5 — Lance Yi</title>
+<meta name="description" content="A multi-agent debate system that predicts Bitcoin's next 5-minute move on Polymarket — 326 trades, +14.72% simulated ROI over a 110-hour live session.">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="../../">lancehy.me</a>
+  <ul class="nav-links">
+    <li><a href="../../#about">about me</a></li>
+    <li><a href="../">projects</a></li>
+    <li><a href="../../thoughts/">thoughts</a></li>
+    <li><a href="../../#contact">contact</a></li>
+    <li><a href="../../resume.pdf" target="_blank" rel="noopener" class="nav-resume">résumé</a></li>
+  </ul>
+</nav>
+
+<article class="case-study fade-up">
+
+  <a class="case-back" href="../">← back to projects</a>
+
+  <div class="case-eyebrow">
+    <span class="ce-divider"></span>
+    <span>case study · 2026</span>
+    <span>·</span>
+    <span>multi-agent llm</span>
+  </div>
+
+  <h1 class="case-title">Polysignal-BTC5.<br>Can <em>structured AI</em> beat the crowd?</h1>
+
+  <p class="case-lede">
+    Three AI agents — a <strong>momentum analyst</strong>, a <strong>contrarian</strong>, and a <strong>judge</strong> —
+    debate Bitcoin's next 5-minute price move on Polymarket. The dashboard below is a live snapshot of
+    the system's actual performance over a <strong>110-hour, 326-trade</strong> session.
+  </p>
+
+  <div class="case-tags">
+    <span class="tag">Python</span>
+    <span class="tag">multi-agent</span>
+    <span class="tag">LLMs</span>
+    <span class="tag amber">prediction markets</span>
+    <span class="tag amber">forecasting</span>
+    <span class="tag">SQLite</span>
+    <span class="tag">Streamlit</span>
+  </div>
+
+  <div class="case-actions">
+    <a href="#deck" class="btn btn-primary">view the deck ↓</a>
+    <a href="Polysignal-BTC5.pdf" download class="btn btn-outline">download pdf</a>
+    <!-- TODO: replace with the actual repo URL -->
+    <a href="https://github.com/YOUR-USERNAME/polysignal-btc-ai-trading" target="_blank" rel="noopener" class="btn btn-outline">view code</a>
+  </div>
+
+  <!-- ===================== LIVE DASHBOARD ===================== -->
+  <section class="ps-dash">
+    <div class="ps-dash-banner">
+      <div>
+        <div class="ps-dash-brand">₿ PolySignal</div>
+        <div class="ps-dash-sub">BTC 5-min prediction market · multi-agent AI ensemble</div>
+      </div>
+      <div class="ps-dash-status">
+        <span class="ps-pill"><span class="ps-pulse"></span>data snapshot</span>
+        <div class="ps-dash-asof">as of 2026-04-28 15:46 UTC</div>
+      </div>
+    </div>
+
+    <!-- KPI grid -->
+    <div class="ps-kpi-grid">
+      <div class="ps-kpi">
+        <div class="ps-kpi-label">Portfolio value</div>
+        <div class="ps-kpi-num">$114,719.68</div>
+        <div class="ps-kpi-delta ps-up">+$14,719.68 (+14.72%)</div>
+      </div>
+      <div class="ps-kpi">
+        <div class="ps-kpi-label">Total trades</div>
+        <div class="ps-kpi-num">326</div>
+        <div class="ps-kpi-delta">1 pending</div>
+      </div>
+      <div class="ps-kpi">
+        <div class="ps-kpi-label">Win rate</div>
+        <div class="ps-kpi-num">54.9%</div>
+        <div class="ps-kpi-delta">179W / 147L</div>
+      </div>
+      <div class="ps-kpi">
+        <div class="ps-kpi-label">Predictions scored</div>
+        <div class="ps-kpi-num">326</div>
+        <div class="ps-kpi-delta">110h session</div>
+      </div>
+      <div class="ps-kpi">
+        <div class="ps-kpi-label">Directional accuracy</div>
+        <div class="ps-kpi-num accent">54.9%</div>
+        <div class="ps-kpi-delta ps-up">▲ vs 50% baseline</div>
+      </div>
+      <div class="ps-kpi">
+        <div class="ps-kpi-label">Avg Brier score</div>
+        <div class="ps-kpi-num">0.2490</div>
+        <div class="ps-kpi-delta">↓ lower is better</div>
+      </div>
+    </div>
+
+    <!-- Portfolio performance chart -->
+    <div class="ps-panel">
+      <div class="ps-panel-head">
+        <div class="ps-panel-title">Portfolio performance</div>
+        <div class="ps-panel-meta">2026-04-24 → 2026-04-28 · 326 trades</div>
+      </div>
+      <svg class="ps-balance-chart" viewBox="0 0 1100 240" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <line x1="12" x2="1088" y1="218.5" y2="218.5" class="ps-grid"/><text x="1086" y="215.5" class="ps-tick">$100,000</text>
+        <line x1="12" x2="1088" y1="171.5" y2="171.5" class="ps-grid"/><text x="1086" y="168.5" class="ps-tick">$105,000</text>
+        <line x1="12" x2="1088" y1="124.5" y2="124.5" class="ps-grid"/><text x="1086" y="121.5" class="ps-tick">$110,000</text>
+        <line x1="12" x2="1088" y1="77.4" y2="77.4" class="ps-grid"/><text x="1086" y="74.4" class="ps-tick">$115,000</text>
+        <line x1="12" x2="1088" y1="30.4" y2="30.4" class="ps-grid"/><text x="1086" y="27.4" class="ps-tick">$120,000</text>
+        <path d="M 12.0,218.5 L 15.3,213.9 L 18.6,218.6 L 21.9,223.3 L 25.2,218.5 L 28.5,213.9 L 31.8,218.6 L 35.1,223.3 L 38.4,218.5 L 41.7,214.1 L 45.0,210.6 L 48.3,207.0 L 51.6,202.6 L 54.9,198.0 L 58.2,202.7 L 61.5,198.1 L 64.8,193.5 L 68.1,188.9 L 71.4,193.6 L 74.7,188.8 L 78.0,184.2 L 81.3,188.9 L 84.6,184.5 L 87.9,189.2 L 91.2,184.7 L 94.5,180.1 L 97.8,184.8 L 101.1,189.5 L 104.4,185.1 L 107.7,180.5 L 111.0,176.1 L 114.3,171.6 L 117.6,166.8 L 120.9,162.0 L 124.2,166.7 L 127.5,162.1 L 130.8,157.7 L 134.1,162.4 L 137.4,157.6 L 140.7,162.3 L 144.0,167.0 L 147.3,171.7 L 150.6,176.4 L 153.9,172.2 L 157.2,167.9 L 160.5,163.5 L 163.8,168.2 L 167.1,163.4 L 170.4,158.8 L 173.7,163.5 L 177.0,168.2 L 180.3,163.4 L 183.6,168.1 L 186.9,172.8 L 190.2,177.5 L 193.5,182.2 L 196.8,177.8 L 200.1,182.5 L 203.4,187.2 L 206.7,182.6 L 210.0,177.9 L 213.3,173.3 L 216.6,168.5 L 219.9,163.7 L 223.2,159.1 L 226.5,163.8 L 229.8,159.0 L 233.1,163.7 L 236.4,159.1 L 239.7,163.8 L 243.0,159.0 L 246.3,154.4 L 249.6,150.0 L 252.9,145.2 L 256.2,140.4 L 259.5,135.6 L 262.8,131.0 L 266.1,126.4 L 269.4,131.1 L 272.7,135.8 L 276.0,131.0 L 279.3,135.7 L 282.7,131.1 L 286.0,135.8 L 289.3,131.2 L 292.6,126.6 L 295.9,131.3 L 299.2,126.5 L 302.5,131.2 L 305.8,126.6 L 309.1,122.0 L 312.4,126.7 L 315.7,131.4 L 319.0,136.1 L 322.3,131.5 L 325.6,126.8 L 328.9,131.5 L 332.2,126.9 L 335.5,131.6 L 338.8,126.8 L 342.1,131.5 L 345.4,126.9 L 348.7,122.3 L 352.0,127.0 L 355.3,131.7 L 358.6,126.9 L 361.9,131.6 L 365.2,127.0 L 368.5,122.4 L 371.8,127.1 L 375.1,122.5 L 378.4,117.7 L 381.7,113.3 L 385.0,118.0 L 388.3,113.9 L 391.6,118.6 L 394.9,123.3 L 398.2,128.0 L 401.5,123.8 L 404.8,128.5 L 408.1,133.2 L 411.4,137.9 L 414.7,142.6 L 418.0,147.3 L 421.3,142.7 L 424.6,147.4 L 427.9,152.1 L 431.2,147.5 L 434.5,142.8 L 437.8,147.5 L 441.1,142.9 L 444.4,147.6 L 447.7,143.0 L 451.0,147.7 L 454.3,142.9 L 457.6,139.0 L 460.9,133.9 L 464.2,129.1 L 467.5,124.3 L 470.8,119.9 L 474.1,124.6 L 477.4,120.0 L 480.7,115.4 L 484.0,120.1 L 487.3,124.8 L 490.6,120.0 L 493.9,115.4 L 497.2,120.1 L 500.5,115.6 L 503.8,120.4 L 507.1,125.1 L 510.4,129.8 L 513.7,125.0 L 517.0,120.3 L 520.3,115.9 L 523.6,110.9 L 526.9,106.1 L 530.2,101.5 L 533.5,96.9 L 536.8,101.6 L 540.1,106.3 L 543.4,101.7 L 546.7,106.4 L 550.0,102.0 L 553.3,97.6 L 556.6,92.9 L 559.9,97.6 L 563.2,102.3 L 566.5,107.0 L 569.8,102.4 L 573.1,97.8 L 576.4,102.5 L 579.7,97.7 L 583.0,92.9 L 586.3,88.1 L 589.6,83.5 L 592.9,88.2 L 596.2,83.6 L 599.5,78.8 L 602.8,83.5 L 606.1,88.2 L 609.4,83.6 L 612.7,88.3 L 616.0,93.0 L 619.3,88.2 L 622.6,83.6 L 625.9,88.3 L 629.2,93.0 L 632.5,88.4 L 635.8,93.1 L 639.1,88.5 L 642.4,93.2 L 645.7,88.6 L 649.0,83.8 L 652.3,79.2 L 655.6,74.6 L 658.9,79.3 L 662.2,84.0 L 665.5,88.7 L 668.8,93.4 L 672.1,98.1 L 675.4,93.5 L 678.7,88.5 L 682.0,83.9 L 685.3,88.6 L 688.6,93.3 L 691.9,88.7 L 695.2,83.9 L 698.5,88.6 L 701.8,84.0 L 705.1,88.7 L 708.4,83.9 L 711.7,79.1 L 715.0,83.8 L 718.3,88.5 L 721.6,93.2 L 724.9,88.6 L 728.2,93.3 L 731.5,88.5 L 734.8,78.3 L 738.1,83.0 L 741.4,87.7 L 744.7,82.9 L 748.0,78.3 L 751.3,73.7 L 754.6,78.4 L 757.9,73.6 L 761.2,68.9 L 764.5,64.7 L 767.8,60.4 L 771.1,55.6 L 774.4,51.0 L 777.7,46.4 L 781.0,41.6 L 784.3,46.3 L 787.6,41.7 L 790.9,46.4 L 794.2,51.1 L 797.5,46.5 L 800.8,51.2 L 804.1,55.9 L 807.4,51.3 L 810.7,46.7 L 814.0,42.1 L 817.3,46.8 L 820.7,42.5 L 824.0,37.9 L 827.3,33.3 L 830.6,38.0 L 833.9,33.6 L 837.2,38.3 L 840.5,33.7 L 843.8,29.1 L 847.1,33.8 L 850.4,38.5 L 853.7,33.9 L 857.0,38.6 L 860.3,34.0 L 863.6,38.7 L 866.9,34.1 L 870.2,29.4 L 873.5,34.2 L 876.8,38.9 L 880.1,35.4 L 883.4,31.3 L 886.7,26.3 L 890.0,21.5 L 893.3,16.7 L 896.6,21.4 L 899.9,26.1 L 903.2,22.0 L 906.5,26.7 L 909.8,31.4 L 913.1,36.1 L 916.4,40.8 L 919.7,36.0 L 923.0,31.4 L 926.3,36.1 L 929.6,40.8 L 932.9,45.5 L 936.2,40.9 L 939.5,36.3 L 942.8,31.5 L 946.1,36.2 L 949.4,40.9 L 952.7,36.5 L 956.0,41.2 L 959.3,45.9 L 962.6,41.3 L 965.9,37.0 L 969.2,41.7 L 972.5,37.1 L 975.8,41.8 L 979.1,46.5 L 982.4,51.2 L 985.7,55.9 L 989.0,60.6 L 992.3,56.0 L 995.6,60.7 L 998.9,65.4 L 1002.2,60.8 L 1005.5,65.5 L 1008.8,70.2 L 1012.1,65.4 L 1015.4,70.1 L 1018.7,65.5 L 1022.0,70.2 L 1025.3,66.0 L 1028.6,61.4 L 1031.9,56.4 L 1035.2,51.8 L 1038.5,56.5 L 1041.8,51.9 L 1045.1,56.6 L 1048.4,61.3 L 1051.7,66.0 L 1055.0,61.4 L 1058.3,56.6 L 1061.6,51.8 L 1064.9,56.5 L 1068.2,61.2 L 1071.5,65.9 L 1074.8,61.3 L 1078.1,66.0 L 1081.4,70.7 L 1084.7,75.4 L 1088.0,80.1 L 1088.0,228 L 12.0,228 Z" class="ps-bal-fill"/>
+        <path d="M 12.0,218.5 L 15.3,213.9 L 18.6,218.6 L 21.9,223.3 L 25.2,218.5 L 28.5,213.9 L 31.8,218.6 L 35.1,223.3 L 38.4,218.5 L 41.7,214.1 L 45.0,210.6 L 48.3,207.0 L 51.6,202.6 L 54.9,198.0 L 58.2,202.7 L 61.5,198.1 L 64.8,193.5 L 68.1,188.9 L 71.4,193.6 L 74.7,188.8 L 78.0,184.2 L 81.3,188.9 L 84.6,184.5 L 87.9,189.2 L 91.2,184.7 L 94.5,180.1 L 97.8,184.8 L 101.1,189.5 L 104.4,185.1 L 107.7,180.5 L 111.0,176.1 L 114.3,171.6 L 117.6,166.8 L 120.9,162.0 L 124.2,166.7 L 127.5,162.1 L 130.8,157.7 L 134.1,162.4 L 137.4,157.6 L 140.7,162.3 L 144.0,167.0 L 147.3,171.7 L 150.6,176.4 L 153.9,172.2 L 157.2,167.9 L 160.5,163.5 L 163.8,168.2 L 167.1,163.4 L 170.4,158.8 L 173.7,163.5 L 177.0,168.2 L 180.3,163.4 L 183.6,168.1 L 186.9,172.8 L 190.2,177.5 L 193.5,182.2 L 196.8,177.8 L 200.1,182.5 L 203.4,187.2 L 206.7,182.6 L 210.0,177.9 L 213.3,173.3 L 216.6,168.5 L 219.9,163.7 L 223.2,159.1 L 226.5,163.8 L 229.8,159.0 L 233.1,163.7 L 236.4,159.1 L 239.7,163.8 L 243.0,159.0 L 246.3,154.4 L 249.6,150.0 L 252.9,145.2 L 256.2,140.4 L 259.5,135.6 L 262.8,131.0 L 266.1,126.4 L 269.4,131.1 L 272.7,135.8 L 276.0,131.0 L 279.3,135.7 L 282.7,131.1 L 286.0,135.8 L 289.3,131.2 L 292.6,126.6 L 295.9,131.3 L 299.2,126.5 L 302.5,131.2 L 305.8,126.6 L 309.1,122.0 L 312.4,126.7 L 315.7,131.4 L 319.0,136.1 L 322.3,131.5 L 325.6,126.8 L 328.9,131.5 L 332.2,126.9 L 335.5,131.6 L 338.8,126.8 L 342.1,131.5 L 345.4,126.9 L 348.7,122.3 L 352.0,127.0 L 355.3,131.7 L 358.6,126.9 L 361.9,131.6 L 365.2,127.0 L 368.5,122.4 L 371.8,127.1 L 375.1,122.5 L 378.4,117.7 L 381.7,113.3 L 385.0,118.0 L 388.3,113.9 L 391.6,118.6 L 394.9,123.3 L 398.2,128.0 L 401.5,123.8 L 404.8,128.5 L 408.1,133.2 L 411.4,137.9 L 414.7,142.6 L 418.0,147.3 L 421.3,142.7 L 424.6,147.4 L 427.9,152.1 L 431.2,147.5 L 434.5,142.8 L 437.8,147.5 L 441.1,142.9 L 444.4,147.6 L 447.7,143.0 L 451.0,147.7 L 454.3,142.9 L 457.6,139.0 L 460.9,133.9 L 464.2,129.1 L 467.5,124.3 L 470.8,119.9 L 474.1,124.6 L 477.4,120.0 L 480.7,115.4 L 484.0,120.1 L 487.3,124.8 L 490.6,120.0 L 493.9,115.4 L 497.2,120.1 L 500.5,115.6 L 503.8,120.4 L 507.1,125.1 L 510.4,129.8 L 513.7,125.0 L 517.0,120.3 L 520.3,115.9 L 523.6,110.9 L 526.9,106.1 L 530.2,101.5 L 533.5,96.9 L 536.8,101.6 L 540.1,106.3 L 543.4,101.7 L 546.7,106.4 L 550.0,102.0 L 553.3,97.6 L 556.6,92.9 L 559.9,97.6 L 563.2,102.3 L 566.5,107.0 L 569.8,102.4 L 573.1,97.8 L 576.4,102.5 L 579.7,97.7 L 583.0,92.9 L 586.3,88.1 L 589.6,83.5 L 592.9,88.2 L 596.2,83.6 L 599.5,78.8 L 602.8,83.5 L 606.1,88.2 L 609.4,83.6 L 612.7,88.3 L 616.0,93.0 L 619.3,88.2 L 622.6,83.6 L 625.9,88.3 L 629.2,93.0 L 632.5,88.4 L 635.8,93.1 L 639.1,88.5 L 642.4,93.2 L 645.7,88.6 L 649.0,83.8 L 652.3,79.2 L 655.6,74.6 L 658.9,79.3 L 662.2,84.0 L 665.5,88.7 L 668.8,93.4 L 672.1,98.1 L 675.4,93.5 L 678.7,88.5 L 682.0,83.9 L 685.3,88.6 L 688.6,93.3 L 691.9,88.7 L 695.2,83.9 L 698.5,88.6 L 701.8,84.0 L 705.1,88.7 L 708.4,83.9 L 711.7,79.1 L 715.0,83.8 L 718.3,88.5 L 721.6,93.2 L 724.9,88.6 L 728.2,93.3 L 731.5,88.5 L 734.8,78.3 L 738.1,83.0 L 741.4,87.7 L 744.7,82.9 L 748.0,78.3 L 751.3,73.7 L 754.6,78.4 L 757.9,73.6 L 761.2,68.9 L 764.5,64.7 L 767.8,60.4 L 771.1,55.6 L 774.4,51.0 L 777.7,46.4 L 781.0,41.6 L 784.3,46.3 L 787.6,41.7 L 790.9,46.4 L 794.2,51.1 L 797.5,46.5 L 800.8,51.2 L 804.1,55.9 L 807.4,51.3 L 810.7,46.7 L 814.0,42.1 L 817.3,46.8 L 820.7,42.5 L 824.0,37.9 L 827.3,33.3 L 830.6,38.0 L 833.9,33.6 L 837.2,38.3 L 840.5,33.7 L 843.8,29.1 L 847.1,33.8 L 850.4,38.5 L 853.7,33.9 L 857.0,38.6 L 860.3,34.0 L 863.6,38.7 L 866.9,34.1 L 870.2,29.4 L 873.5,34.2 L 876.8,38.9 L 880.1,35.4 L 883.4,31.3 L 886.7,26.3 L 890.0,21.5 L 893.3,16.7 L 896.6,21.4 L 899.9,26.1 L 903.2,22.0 L 906.5,26.7 L 909.8,31.4 L 913.1,36.1 L 916.4,40.8 L 919.7,36.0 L 923.0,31.4 L 926.3,36.1 L 929.6,40.8 L 932.9,45.5 L 936.2,40.9 L 939.5,36.3 L 942.8,31.5 L 946.1,36.2 L 949.4,40.9 L 952.7,36.5 L 956.0,41.2 L 959.3,45.9 L 962.6,41.3 L 965.9,37.0 L 969.2,41.7 L 972.5,37.1 L 975.8,41.8 L 979.1,46.5 L 982.4,51.2 L 985.7,55.9 L 989.0,60.6 L 992.3,56.0 L 995.6,60.7 L 998.9,65.4 L 1002.2,60.8 L 1005.5,65.5 L 1008.8,70.2 L 1012.1,65.4 L 1015.4,70.1 L 1018.7,65.5 L 1022.0,70.2 L 1025.3,66.0 L 1028.6,61.4 L 1031.9,56.4 L 1035.2,51.8 L 1038.5,56.5 L 1041.8,51.9 L 1045.1,56.6 L 1048.4,61.3 L 1051.7,66.0 L 1055.0,61.4 L 1058.3,56.6 L 1061.6,51.8 L 1064.9,56.5 L 1068.2,61.2 L 1071.5,65.9 L 1074.8,61.3 L 1078.1,66.0 L 1081.4,70.7 L 1084.7,75.4 L 1088.0,80.1" class="ps-bal-line"/>
+        <line x1="12" x2="1088" y1="218.5" y2="218.5" class="ps-ref"/>
+        <text x="1084" y="214.5" class="ps-ref-label">starting balance · $100,000</text>
+        <circle cx="15.3" cy="213.9" r="3" class="ps-dot ps-dot-win"/>
+        <circle cx="31.8" cy="218.6" r="3" class="ps-dot ps-dot-loss"/>
+        <circle cx="48.3" cy="207.0" r="3" class="ps-dot ps-dot-win"/>
+        <circle cx="64.8" cy="193.5" r="3" class="ps-dot ps-dot-win"/>
+        <circle cx="81.3" cy="188.9" r="3" class="ps-dot ps-dot-loss"/>
+        <circle cx="97.8" cy="184.8" r="3" class="ps-dot ps-dot-loss"/>
+        <circle cx="114.3" cy="171.6" r="3" class="ps-dot ps-dot-win"/>
+        <circle cx="130.8" cy="157.7" r="3" class="ps-dot ps-dot-win"/>
+        <circle cx="147.3" cy="171.7" r="3" class="ps-dot ps-dot-loss"/>
+        <circle cx="163.8" cy="168.2" r="3" class="ps-dot ps-dot-loss"/>
+        <circle cx="180.3" cy="163.4" r="3" class="ps-dot ps-dot-win"/>
+        <circle cx="196.8" cy="177.8" r="3" class="ps-dot ps-dot-win"/>
+        <circle cx="213.3" cy="173.3" r="3" class="ps-dot ps-dot-win"/>
+        <circle cx="229.8" cy="159.0" r="3" class="ps-dot ps-dot-win"/>
+        <circle cx="246.3" cy="154.4" r="3" class="ps-dot ps-dot-win"/>
+        <circle cx="262.8" cy="131.0" r="3" class="ps-dot ps-dot-win"/>
+        <circle cx="279.3" cy="135.7" r="3" class="ps-dot ps-dot-loss"/>
+        <circle cx="295.9" cy="131.3" r="3" class="ps-dot ps-dot-loss"/>
+        <circle cx="312.4" cy="126.7" r="3" class="ps-dot ps-dot-loss"/>
+        <circle cx="328.9" cy="131.5" r="3" class="ps-dot ps-dot-loss"/>
+        <circle cx="345.4" cy="126.9" r="3" class="ps-dot ps-dot-win"/>
+        <circle cx="361.9" cy="131.6" r="3" class="ps-dot ps-dot-loss"/>
+        <circle cx="378.4" cy="117.7" r="3" class="ps-dot ps-dot-win"/>
+        <circle cx="394.9" cy="123.3" r="3" class="ps-dot ps-dot-loss"/>
+        <circle cx="411.4" cy="137.9" r="3" class="ps-dot ps-dot-loss"/>
+        <circle cx="427.9" cy="152.1" r="3" class="ps-dot ps-dot-loss"/>
+        <circle cx="444.4" cy="147.6" r="3" class="ps-dot ps-dot-loss"/>
+        <circle cx="460.9" cy="133.9" r="3" class="ps-dot ps-dot-win"/>
+        <circle cx="477.4" cy="120.0" r="3" class="ps-dot ps-dot-win"/>
+        <circle cx="493.9" cy="115.4" r="3" class="ps-dot ps-dot-win"/>
+        <circle cx="510.4" cy="129.8" r="3" class="ps-dot ps-dot-loss"/>
+        <circle cx="526.9" cy="106.1" r="3" class="ps-dot ps-dot-win"/>
+        <circle cx="543.4" cy="101.7" r="3" class="ps-dot ps-dot-win"/>
+        <circle cx="559.9" cy="97.6" r="3" class="ps-dot ps-dot-loss"/>
+        <circle cx="576.4" cy="102.5" r="3" class="ps-dot ps-dot-loss"/>
+        <circle cx="592.9" cy="88.2" r="3" class="ps-dot ps-dot-loss"/>
+        <circle cx="609.4" cy="83.6" r="3" class="ps-dot ps-dot-win"/>
+        <circle cx="625.9" cy="88.3" r="3" class="ps-dot ps-dot-loss"/>
+        <circle cx="642.4" cy="93.2" r="3" class="ps-dot ps-dot-loss"/>
+        <circle cx="658.9" cy="79.3" r="3" class="ps-dot ps-dot-loss"/>
+        <circle cx="675.4" cy="93.5" r="3" class="ps-dot ps-dot-win"/>
+        <circle cx="691.9" cy="88.7" r="3" class="ps-dot ps-dot-win"/>
+        <circle cx="708.4" cy="83.9" r="3" class="ps-dot ps-dot-win"/>
+        <circle cx="724.9" cy="88.6" r="3" class="ps-dot ps-dot-win"/>
+        <circle cx="741.4" cy="87.7" r="3" class="ps-dot ps-dot-loss"/>
+        <circle cx="757.9" cy="73.6" r="3" class="ps-dot ps-dot-win"/>
+        <circle cx="774.4" cy="51.0" r="3" class="ps-dot ps-dot-win"/>
+        <circle cx="790.9" cy="46.4" r="3" class="ps-dot ps-dot-loss"/>
+        <circle cx="807.4" cy="51.3" r="3" class="ps-dot ps-dot-win"/>
+        <circle cx="824.0" cy="37.9" r="3" class="ps-dot ps-dot-win"/>
+        <circle cx="840.5" cy="33.7" r="3" class="ps-dot ps-dot-win"/>
+        <circle cx="857.0" cy="38.6" r="3" class="ps-dot ps-dot-loss"/>
+        <circle cx="873.5" cy="34.2" r="3" class="ps-dot ps-dot-loss"/>
+        <circle cx="890.0" cy="21.5" r="3" class="ps-dot ps-dot-win"/>
+        <circle cx="906.5" cy="26.7" r="3" class="ps-dot ps-dot-loss"/>
+        <circle cx="923.0" cy="31.4" r="3" class="ps-dot ps-dot-win"/>
+        <circle cx="939.5" cy="36.3" r="3" class="ps-dot ps-dot-win"/>
+        <circle cx="956.0" cy="41.2" r="3" class="ps-dot ps-dot-loss"/>
+        <circle cx="972.5" cy="37.1" r="3" class="ps-dot ps-dot-win"/>
+        <circle cx="989.0" cy="60.6" r="3" class="ps-dot ps-dot-loss"/>
+        <circle cx="1005.5" cy="65.5" r="3" class="ps-dot ps-dot-loss"/>
+        <circle cx="1022.0" cy="70.2" r="3" class="ps-dot ps-dot-loss"/>
+        <circle cx="1038.5" cy="56.5" r="3" class="ps-dot ps-dot-loss"/>
+        <circle cx="1055.0" cy="61.4" r="3" class="ps-dot ps-dot-win"/>
+        <circle cx="1071.5" cy="65.9" r="3" class="ps-dot ps-dot-loss"/>
+        <circle cx="1088.0" cy="80.1" r="3" class="ps-dot ps-dot-loss"/>
+      </svg>
+      <div class="ps-legend">
+        <span><span class="ps-legend-dot win"></span>win</span>
+        <span><span class="ps-legend-dot loss"></span>loss</span>
+        <span><span class="ps-legend-line"></span>balance</span>
+      </div>
+    </div>
+
+    <!-- Three-up panels -->
+    <div class="ps-three-up">
+      <div class="ps-panel">
+        <div class="ps-panel-head"><div class="ps-panel-title">Confidence calibration</div></div>
+        <div class="ps-cal-block">
+          <div class="ps-cal-row">
+            <div class="ps-cal-label">50–55% <span class="ps-cal-n">n=308</span></div>
+            <div class="ps-cal-bars">
+              <div class="ps-cal-bar ps-cal-acc" style="width:55.2%;"><span>55.2% actual</span></div>
+              <div class="ps-cal-bar ps-cal-conf" style="width:52.9%;"><span>52.9% confidence</span></div>
+            </div>
+          </div>
+          <div class="ps-cal-row">
+            <div class="ps-cal-label">55–60% <span class="ps-cal-n">n=17</span></div>
+            <div class="ps-cal-bars">
+              <div class="ps-cal-bar ps-cal-acc" style="width:52.9%;"><span>52.9% actual</span></div>
+              <div class="ps-cal-bar ps-cal-conf" style="width:55.0%;"><span>55.0% confidence</span></div>
+            </div>
+          </div>
+          <div class="ps-cal-row">
+            <div class="ps-cal-label">60–65% <span class="ps-cal-n">n=1</span></div>
+            <div class="ps-cal-bars">
+              <div class="ps-cal-bar ps-cal-conf" style="width:61.3%;"><span>61.3% confidence (no wins)</span></div>
+            </div>
+          </div>
+          <div class="ps-cal-row">
+            <div class="ps-cal-label">65%+</div>
+            <div class="ps-cal-empty">no calls in this bucket</div>
+          </div>
+        </div>
+        <div class="ps-cal-legend">
+          <span><i class="ps-sw acc"></i>actual accuracy</span>
+          <span><i class="ps-sw conf"></i>average confidence</span>
+        </div>
+      </div>
+
+      <div class="ps-panel">
+        <div class="ps-panel-head"><div class="ps-panel-title">UP vs DOWN calls</div></div>
+        <div class="ps-ud-block">
+          <div class="ps-ud-row">
+            <div class="ps-ud-label">UP calls <span class="ps-ud-acc">51.8%</span></div>
+            <div class="ps-ud-bar-stack">
+              <div class="ps-ud-bar ps-ud-win" style="flex:115;">115 ✓</div>
+              <div class="ps-ud-bar ps-ud-loss" style="flex:107;">107 ✗</div>
+            </div>
+          </div>
+          <div class="ps-ud-row">
+            <div class="ps-ud-label">DOWN calls <span class="ps-ud-acc">61.5%</span></div>
+            <div class="ps-ud-bar-stack">
+              <div class="ps-ud-bar ps-ud-win" style="flex:64;">64 ✓</div>
+              <div class="ps-ud-bar ps-ud-loss" style="flex:40;">40 ✗</div>
+            </div>
+          </div>
+        </div>
+        <p class="ps-panel-foot">DOWN calls outperform UP — and they're rarer, suggesting the model picks its bearish moments selectively.</p>
+      </div>
+
+      <div class="ps-panel">
+        <div class="ps-panel-head"><div class="ps-panel-title">Per-model accuracy</div></div>
+        <div class="ps-pm-block">
+          <div class="ps-pm-row">
+            <div class="ps-pm-name">xAI (Grok) <span class="ps-pm-meta">322 votes · brier 0.2461</span></div>
+            <div class="ps-pm-bar-track">
+              <div class="ps-pm-bar pm-good" style="width:55.9%;"></div>
+              <div class="ps-pm-baseline"></div>
+            </div>
+            <div class="ps-pm-pct">55.9%</div>
+          </div>
+          <div class="ps-pm-row">
+            <div class="ps-pm-name">Claude (Judge) <span class="ps-pm-meta">322 votes · brier 0.2488</span></div>
+            <div class="ps-pm-bar-track">
+              <div class="ps-pm-bar pm-mid" style="width:54.7%;"></div>
+              <div class="ps-pm-baseline"></div>
+            </div>
+            <div class="ps-pm-pct">54.7%</div>
+          </div>
+          <div class="ps-pm-row">
+            <div class="ps-pm-name">OpenAI (GPT-4o-mini) <span class="ps-pm-meta">322 votes · brier 0.2551</span></div>
+            <div class="ps-pm-bar-track">
+              <div class="ps-pm-bar pm-low" style="width:47.5%;"></div>
+              <div class="ps-pm-baseline"></div>
+            </div>
+            <div class="ps-pm-pct">47.5%</div>
+          </div>
+        </div>
+        <p class="ps-panel-foot">Momentum (Grok) beats the contrarian (GPT-4o-mini); judge sits in the middle. Vertical line = 50% baseline.</p>
+      </div>
+    </div>
+
+    <!-- Recent trades -->
+    <div class="ps-panel">
+      <div class="ps-panel-head">
+        <div class="ps-panel-title">Recent trades</div>
+        <div class="ps-panel-meta">last 10 of 326</div>
+      </div>
+      <div class="case-table-wrap">
+        <table class="case-table ps-trade-table">
+          <thead>
+            <tr><th>Time (UTC)</th><th>Direction</th><th>Odds</th><th>Bet</th><th>P&amp;L</th><th>Balance after</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="num">2026-04-28 15:46</td><td><span class="dir-pill dir-up">UP</span></td><td class="num">50.5%</td><td class="num">$500</td><td class="num pnl-loss">-$500.00</td><td class="num">$114,719.68</td></tr>
+            <tr><td class="num">2026-04-28 14:25</td><td><span class="dir-pill dir-up">UP</span></td><td class="num">51.5%</td><td class="num">$500</td><td class="num pnl-loss">-$500.00</td><td class="num">$115,219.68</td></tr>
+            <tr><td class="num">2026-04-28 14:20</td><td><span class="dir-pill dir-up">UP</span></td><td class="num">50.5%</td><td class="num">$500</td><td class="num pnl-loss">-$500.00</td><td class="num">$115,719.68</td></tr>
+            <tr><td class="num">2026-04-28 14:15</td><td><span class="dir-pill dir-up">UP</span></td><td class="num">50.5%</td><td class="num">$500</td><td class="num pnl-loss">-$500.00</td><td class="num">$116,219.68</td></tr>
+            <tr><td class="num">2026-04-28 14:10</td><td><span class="dir-pill dir-up">UP</span></td><td class="num">50.5%</td><td class="num">$500</td><td class="num pnl-win">+$490.10</td><td class="num">$116,719.68</td></tr>
+            <tr><td class="num">2026-04-28 14:05</td><td><span class="dir-pill dir-up">UP</span></td><td class="num">50.5%</td><td class="num">$500</td><td class="num pnl-loss">-$500.00</td><td class="num">$116,229.58</td></tr>
+            <tr><td class="num">2026-04-28 14:00</td><td><span class="dir-pill dir-down">DOWN</span></td><td class="num">49.5%</td><td class="num">$500</td><td class="num pnl-loss">-$500.00</td><td class="num">$116,729.58</td></tr>
+            <tr><td class="num">2026-04-28 13:55</td><td><span class="dir-pill dir-up">UP</span></td><td class="num">50.5%</td><td class="num">$500</td><td class="num pnl-loss">-$500.00</td><td class="num">$117,229.58</td></tr>
+            <tr><td class="num">2026-04-28 13:50</td><td><span class="dir-pill dir-up">UP</span></td><td class="num">49.5%</td><td class="num">$500</td><td class="num pnl-win">+$510.10</td><td class="num">$117,729.58</td></tr>
+            <tr><td class="num">2026-04-28 13:45</td><td><span class="dir-pill dir-down">DOWN</span></td><td class="num">49.5%</td><td class="num">$500</td><td class="num pnl-win">+$510.10</td><td class="num">$117,219.48</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <p class="ps-dash-note">
+      This is a static snapshot of the live <strong>Streamlit dashboard</strong> (<code>dashboard.py</code>),
+      rendered from <code>polysignal_btc.db</code> as of 2026-04-28 15:46 UTC.
+      The live version auto-refreshes every 30 seconds during a trading session.
+    </p>
+  </section>
+
+  <!-- ===================== INTERPRETATION ===================== -->
+  <div class="case-divider-label"><span>how it works · interpretation</span></div>
+
+  <section class="case-section">
+    <h2>Why <em>5-minute</em> Bitcoin markets?</h2>
+    <p>
+      Polymarket's BTC up/down 5-minute markets resolve via a Chainlink oracle — a clean,
+      objective binary outcome with no ambiguity. That gives me a research environment with
+      <strong>288 markets per day</strong>, dense feedback, and a strong baseline already
+      encoded in the crowd's odds.
+    </p>
+    <blockquote class="case-quote">
+      "A large group of diverse individuals will come up with better and more robust forecasts
+      and make more intelligent decisions than even the experts."
+      <cite>— James Surowiecki, The Wisdom of Crowds (p.41)</cite>
+    </blockquote>
+    <p>
+      If markets are fully efficient, no AI should beat the crowd. The question I wanted to
+      answer: <strong>can a multi-agent LLM debate system extract directional signal beyond
+      what the crowd already knows?</strong>
+    </p>
+  </section>
+
+  <section class="case-section">
+    <h2>System <em>architecture</em></h2>
+    <p>
+      An orchestrator triggers four steps every five minutes, synchronized to the Polymarket
+      market clock. Predictions and evaluations are persisted to SQLite — which is exactly
+      what the dashboard above reads from.
+    </p>
+
+    <div class="arch-diagram">
+      <svg viewBox="0 0 700 360" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 Z" fill="#7A6A48"/>
+          </marker>
+        </defs>
+
+        <rect x="180" y="20" width="340" height="56" rx="6" fill="#D9CEAD" stroke="#5E6B35" stroke-width="1.2"/>
+        <text x="350" y="45" text-anchor="middle" font-family="DM Mono, monospace" font-size="13" fill="#2A1E0C" font-weight="500">Orchestrator (run.py)</text>
+        <text x="350" y="63" text-anchor="middle" font-family="DM Mono, monospace" font-size="10" fill="#7A6A48">triggered every 5 min · synced to Polymarket clock</text>
+
+        <rect x="60" y="140" width="170" height="58" rx="6" fill="#E4D9C2" stroke="#7A6A48" stroke-width="1"/>
+        <text x="145" y="165" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="13" fill="#2A1E0C" font-weight="500">Evaluator</text>
+        <text x="145" y="184" text-anchor="middle" font-family="DM Mono, monospace" font-size="10" fill="#7A6A48">step 1</text>
+
+        <rect x="265" y="140" width="170" height="58" rx="6" fill="#E4D9C2" stroke="#7A6A48" stroke-width="1"/>
+        <text x="350" y="165" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="13" fill="#2A1E0C" font-weight="500">Collector</text>
+        <text x="350" y="184" text-anchor="middle" font-family="DM Mono, monospace" font-size="10" fill="#7A6A48">step 2 · live APIs</text>
+
+        <rect x="470" y="140" width="170" height="58" rx="6" fill="#E4D9C2" stroke="#5E6B35" stroke-width="1.2"/>
+        <text x="555" y="165" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="13" fill="#2A1E0C" font-weight="500">Debate Agent</text>
+        <text x="555" y="184" text-anchor="middle" font-family="DM Mono, monospace" font-size="10" fill="#5E6B35">step 3 · MAD</text>
+
+        <line x1="280" y1="76" x2="155" y2="138" stroke="#7A6A48" stroke-width="1" marker-end="url(#arrow)"/>
+        <line x1="350" y1="76" x2="350" y2="138" stroke="#7A6A48" stroke-width="1" marker-end="url(#arrow)"/>
+        <line x1="420" y1="76" x2="545" y2="138" stroke="#7A6A48" stroke-width="1" marker-end="url(#arrow)"/>
+
+        <rect x="220" y="250" width="260" height="58" rx="6" fill="#F0E9D6" stroke="#B8861E" stroke-width="1.2"/>
+        <text x="350" y="275" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="13" fill="#2A1E0C" font-weight="500">SQLite</text>
+        <text x="350" y="294" text-anchor="middle" font-family="DM Mono, monospace" font-size="10" fill="#7A6A48">predictions · eval_records · trades</text>
+
+        <line x1="145" y1="198" x2="270" y2="248" stroke="#7A6A48" stroke-width="1" marker-end="url(#arrow)"/>
+        <line x1="350" y1="198" x2="350" y2="248" stroke="#7A6A48" stroke-width="1" marker-end="url(#arrow)"/>
+        <line x1="555" y1="198" x2="430" y2="248" stroke="#7A6A48" stroke-width="1" marker-end="url(#arrow)"/>
+
+        <rect x="220" y="320" width="260" height="32" rx="4" fill="#E4D9C2" stroke="#7A6A48" stroke-width="0.8"/>
+        <text x="350" y="340" text-anchor="middle" font-family="DM Mono, monospace" font-size="11" fill="#2A1E0C">Streamlit dashboard · metrics reporter</text>
+        <line x1="350" y1="308" x2="350" y2="318" stroke="#7A6A48" stroke-width="1" marker-end="url(#arrow)"/>
+      </svg>
+    </div>
+
+    <h3>Data sources</h3>
+    <div class="case-table-wrap">
+      <table class="case-table">
+        <thead>
+          <tr><th>Source</th><th>Signal</th><th>Latency</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Kraken WebSocket</strong></td><td>live BTC price</td><td class="num">~100ms</td></tr>
+          <tr><td><strong>Kraken REST OHLCV</strong></td><td>RSI(14), volatility, 1/5/15-min momentum</td><td class="num">~1s</td></tr>
+          <tr><td><strong>Polymarket Gamma API</strong></td><td>crowd UP/DOWN odds</td><td class="num">~2s</td></tr>
+          <tr><td><strong>Alternative.me</strong></td><td>Fear &amp; Greed Index (0–100)</td><td class="num">~1s</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <h2>Multi-Agent <em>Debate</em></h2>
+    <p>
+      Each prediction runs through three rounds in roughly <strong>8–14 seconds</strong>.
+      Round 1 produces independent positions for diversity. Round 2 forces conflict via
+      cross-examination. Round 3 aggregates everything into a single verdict.
+    </p>
+
+    <div class="debate-flow">
+      <div class="debate-round">
+        <div class="dr-num">round 1 · diversity</div>
+        <div class="dr-title">Independent</div>
+        <ul>
+          <li><strong>Grok</strong> → momentum position</li>
+          <li><strong>GPT-4o-mini</strong> → contrarian position</li>
+        </ul>
+      </div>
+      <div class="debate-round">
+        <div class="dr-num">round 2 · conflict</div>
+        <div class="dr-title">Cross-examination</div>
+        <ul>
+          <li><strong>Grok</strong> reads GPT → rebuttal</li>
+          <li><strong>GPT</strong> reads Grok → rebuttal</li>
+        </ul>
+      </div>
+      <div class="debate-round">
+        <div class="dr-num">round 3 · aggregation</div>
+        <div class="dr-title">Judgment</div>
+        <ul>
+          <li><strong>Claude Sonnet</strong> reads all 4</li>
+          <li>direction + confidence + reasoning</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <h2>Reading the <em>dashboard</em></h2>
+    <p>
+      Two metrics matter for this kind of system. Both appear in the KPI strip up top.
+    </p>
+    <ul>
+      <li><strong>Directional accuracy</strong> — did the model predict the correct movement?
+        Treats 51% and 99% predictions equally, so it answers <em>"would this signal make money?"</em>
+        At 54.9% over 326 trades, the system is meaningfully above the 50% coin-flip baseline.</li>
+      <li><strong>Brier score</strong> — how confident <em>and</em> calibrated was the prediction?
+        Heavily penalizes overconfident errors. 0.25 is the random baseline; the system clocks
+        0.2490, just under random — which lines up with the calibration panel showing the model
+        rarely strays past 55% confidence.</li>
+    </ul>
+    <p>
+      The <strong>portfolio curve</strong> shows the actual P&amp;L trajectory at a flat
+      $500/trade sizing. Each green dot is a winning trade; each gold dot a loser. The drift is
+      upward but lumpy — a reminder that 54.9% accuracy still loses 45% of the time.
+    </p>
+  </section>
+
+  <section class="case-section">
+    <h2>What the <em>numbers say</em></h2>
+    <p>Three things stand out from the dashboard:</p>
+    <ul>
+      <li><strong>Momentum dominates short-term signal.</strong> Grok at 55.9% is the strongest
+        single agent. The contrarian (GPT-4o-mini) sits at 47.5% — basically a coin flip — which
+        suggests fading momentum at 5-minute horizons is a losing strategy.</li>
+      <li><strong>The judge adds value over the contrarian, not Grok.</strong> Claude's 54.7%
+        sits between the two — sometimes deferring to Grok, sometimes blending. When the judge
+        sided with Grok, accuracy jumped above 60%; when it sided with GPT, it cratered.</li>
+      <li><strong>Calibration is good but conservative.</strong> 308 of 326 calls land in the
+        50–55% confidence bucket, where actual accuracy was 55.2% — almost perfectly calibrated.
+        The model rarely commits past 55% because the underlying signal genuinely is weak.</li>
+    </ul>
+  </section>
+
+  <section class="case-section">
+    <h2>Limitations &amp; <em>future work</em></h2>
+    <p>I want to be honest about what 326 trades over a calm ~5-day window can and can't tell us:</p>
+    <ul>
+      <li><strong>Statistical power</strong> — confidence intervals are still wider than I'd like; a 2,000+ trade run is the goal.</li>
+      <li><strong>No live capital</strong> — simulated P&amp;L only; the actual market is restricted to US users.</li>
+      <li><strong>Weak contrarian</strong> — GPT-4o-mini at 47.5% may be too small for the role.</li>
+      <li><strong>Single regime</strong> — no evaluation across high/low volatility regimes yet.</li>
+      <li><strong>Lite models only</strong> — reasoning-tier models (Opus, GPT-5) would likely shift the picture.</li>
+    </ul>
+
+    <h3>What's next</h3>
+    <ul>
+      <li><strong>Longer evaluation</strong> — extending toward 7+ days, 2,000+ trades.</li>
+      <li><strong>Stronger contrarian</strong> — swap in Claude Opus or GPT-5 for the contrarian role.</li>
+      <li><strong>Adaptive sizing</strong> — Kelly-style sizing instead of flat $500/trade.</li>
+      <li><strong>Multi-horizon</strong> — test 15-min and 30-min markets.</li>
+      <li><strong>Live deployment</strong> — real capital to validate the simulated results.</li>
+    </ul>
+  </section>
+
+  <section class="case-section">
+    <h2>The <em>takeaway</em></h2>
+    <p>
+      Multi-agent debate produces a <strong>modest but real edge</strong> over the 50% baseline —
+      54.9% directional accuracy and a +14.72% simulated return over a 110-hour session.
+      Structured disagreement, then aggregation, extracts incremental predictive signal — and
+      crucially, the system stays <em>well-calibrated</em> rather than overconfident.
+      <em>Preliminary</em>, but the direction is encouraging.
+    </p>
+  </section>
+
+  <!-- PDF DECK -->
+  <section class="case-section" id="deck">
+    <h2>The <em>deck</em></h2>
+    <p>The full presentation walks through motivation, architecture, the MAD pipeline, and results.</p>
+    <div class="pdf-embed">
+      <embed src="Polysignal-BTC5.pdf#view=FitH" type="application/pdf" />
+      <div class="pdf-embed-foot">
+        <span>Polysignal-BTC5.pdf · 15 slides</span>
+        <a href="Polysignal-BTC5.pdf" download>download pdf ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <a class="case-back" href="../">← back to projects</a>
+</article>
+
+<footer>
+  <div class="footer-left">&copy; 2026 · built with intention</div>
+  <div class="footer-links">
+    <a href="mailto:you@lancehy.me">email</a>
+    <a href="https://github.com" target="_blank" rel="noopener">github</a>
+    <a href="https://linkedin.com" target="_blank" rel="noopener">linkedin</a>
+  </div>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>
